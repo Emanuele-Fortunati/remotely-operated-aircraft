@@ -1,20 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GaugeComponent } from './gauge.component';
+import { NeedleGaugeComponent } from './needle-gauge.component';
+import { D3GaugeService } from '../d3gauge.service';
 
-describe('GaugeComponent', () => {
-  let component: GaugeComponent;
-  let fixture: ComponentFixture<GaugeComponent>;
+describe('NeedleGaugeComponent', () => {
+  let component: NeedleGaugeComponent;
+  let fixture: ComponentFixture<NeedleGaugeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GaugeComponent ]
+      declarations: [ NeedleGaugeComponent ],
+      providers: [ D3GaugeService ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GaugeComponent);
+    fixture = TestBed.createComponent(NeedleGaugeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

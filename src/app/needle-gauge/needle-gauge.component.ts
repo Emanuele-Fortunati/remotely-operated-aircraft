@@ -20,7 +20,10 @@ export class NeedleGaugeComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     // draw gauge
-    this.gauge = this.d3gauge.drawGauge(this.options);
+    if(this.options != undefined) {
+      this.gauge = this.d3gauge.drawGauge(this.options);
+    }
+
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -28,6 +31,8 @@ export class NeedleGaugeComponent implements AfterViewInit {
     // update gauge
     if(changes.value && typeof this.gauge == 'function') {
       this.gauge(changes.value.currentValue);
+    } else {
+      this.gauge = this.d3gauge.drawGauge(this.options);
     }
 
   }

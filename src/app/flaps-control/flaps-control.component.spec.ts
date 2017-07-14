@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '@angular/material';
 
 import { FlapsControlComponent } from './flaps-control.component';
 
@@ -8,7 +9,8 @@ describe('FlapsControlComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlapsControlComponent ]
+      declarations: [ FlapsControlComponent ],
+      imports: [ MaterialModule ]
     })
     .compileComponents();
   }));

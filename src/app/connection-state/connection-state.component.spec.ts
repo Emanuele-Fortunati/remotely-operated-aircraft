@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComService } from '../com.service';
 
 import { ConnectionStateComponent } from './connection-state.component';
 
@@ -8,7 +9,8 @@ describe('ConnectionStateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConnectionStateComponent ]
+      declarations: [ ConnectionStateComponent ],
+      providers: [ ComService ]
     })
     .compileComponents();
   }));
