@@ -1,0 +1,17 @@
+<div class="numeric-gauge" (click)="changeView()">
+  <div *ngIf="view == 'current'" class="current">Current</div>
+  <div *ngIf="view == 'current'" class="current">{{current | number : '1.2-2'}}</div>
+
+  <div *ngIf="view == 'min'" class="min">Min</div>
+  <div *ngIf="view == 'min'" class="min">{{min | number : '1.2-2'}}</div>
+
+  <div *ngIf="view == 'max'" class="max">Max</div>
+  <div *ngIf="view == 'max'" class="max">{{max | number : '1.2-2'}}</div>
+
+  <div *ngIf="view == 'avg'" class="avg">Avg</div>
+  <div *ngIf="view == 'avg'" class="avg">{{avg | number : '1.2-2'}}</div>
+
+  <div class="unit">{{unit}}</div>
+
+  <div class="small">(click to change)</div>
+</div>

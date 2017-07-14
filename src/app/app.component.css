@@ -1,0 +1,99 @@
+.container {
+  width: 100%;
+}
+
+.container.disabled {
+  opacity: 0.3;
+}
+
+.content {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  background: url('../assets/background.png') repeat;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+}
+
+.connection-state {
+  width: 177px;
+  height: 72px;
+  overflow: hidden;
+  background: url('../assets/alarm.png') no-repeat;
+  display: inline-block;
+  margin: 0 20px 0 20px;
+}
+
+.connection-state .fake {
+  width: 168px;
+  height: 53px;
+  background: #306b3c;
+  border-radius: 23px;
+  margin-top: 4px;
+  margin-left: 3px;
+  text-align: center;
+  line-height: 50px;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+.connection-state.connecting .fake {
+  background: #c6a72a;
+}
+
+.connection-state.offline .fake {
+  background: #9b2727;
+}
+
+.gauge-container {
+  margin-top: 20px;
+}
+
+.gauge {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  background: url('../assets/gauge.png') no-repeat;
+  display: inline-block;
+  margin: 0 20px 0 20px;
+  padding-top: 40px;
+}
+
+.gauge app-needle-gauge.small {
+  margin-top: -250px;
+  display: block;
+}
+
+.display {
+  width: 323px;
+  height: 108px;
+  overflow: hidden;
+  background: url('../assets/text.png') no-repeat;
+  display: inline-block;
+  margin: -30px 60px 0 60px;
+}
+
+.controller-container {
+  margin: 80px 0 40px 0;
+}
+
+.controller {
+  width: 285px;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  display: inline-block;
+  color: #aaa;
+  padding: 15px;
+  margin: 0 63px 0 63px;
+}
+
+.controller .title {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 22px;
+  margin-bottom: 20px;
+}

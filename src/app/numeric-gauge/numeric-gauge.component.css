@@ -1,0 +1,14 @@
+.numeric-gauge {
+  text-align: center;
+  cursor: pointer;
+}
+.numeric-gauge div {
+  display: inline;
+  color: #9b2727;
+  line-height: 53px;
+  padding: 7px;
+}
+
+.small {
+  font-size: 8px;
+}

@@ -1,0 +1,14 @@
+.flaps-control span {
+  text-transform: uppercase;
+  font: 16px;
+}
+
+.control {
+  margin: 20px 0 40px 0;
+}
+
+.state {
+  font-size: 13px;
+  text-align: left;
+  line-height: 22px;
+}

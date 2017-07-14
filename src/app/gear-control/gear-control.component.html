@@ -1,0 +1,10 @@
+<div class="gear-control">
+  <div class="control">
+    <md-slide-toggle [checked]="currentValue == checkedValue" (change)="controlGear($event)"></md-slide-toggle>
+    <span [hidden]="currentValue == uncheckedValue">{{checkedPosition}}</span><span [hidden]="currentValue != uncheckedValue">{{uncheckedPosition}}</span>
+  </div>
+  <div class="state">
+    <div>Last position received: <span [hidden]="currentValue == uncheckedValue">{{checkedPosition}}</span><span [hidden]="currentValue != uncheckedValue">{{uncheckedPosition}}</span></div>
+    <div>Last position sent: <span [hidden]="updatedValue == uncheckedValue">{{checkedPosition}}</span><span [hidden]="updatedValue != uncheckedValue">{{uncheckedPosition}}</span></div>
+  </div>
+</div>

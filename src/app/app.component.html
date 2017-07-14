@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="content">
+    <div class="connection-state" ngClass="{{connection}}">
+      <div class="fake"><app-connection-state (update)="updateConnection($event)"></app-connection-state></div>
+    </div>
+    <div class="connection-state">
+      <div class="fake">GPS</div>
+    </div>
+    <div class="connection-state">
+      <div class="fake">SATELLITE</div>
+    </div>
+    <div class="connection-state">
+      <div class="fake">SIGNAL</div>
+    </div>
+
+    <div [ngClass]="{'disabled': connection != 'online'}">
+
+      <div class="gauge-container">
+        <div class="gauge">
+          <app-needle-gauge [id]="'speedGauge'" [value]="speedReceived" [options]="speedGaugeOptions"></app-needle-gauge>
+        </div>
+        <div class="gauge">
+          <app-needle-gauge [id]="'altitude1000Gauge'" [value]="altitude1000" [options]="altitude1000GaugeOptions"></app-needle-gauge>
+          <app-needle-gauge class="small" [id]="'altitude100Gauge'" [value]="altitude100" [options]="altitude100GaugeOptions"></app-needle-gauge>
+        </div>
+      <div>
+
+      <div class="display">
+        <app-numeric-gauge [current]="speedReceived" unit="kts"></app-numeric-gauge>
+      </div>
+
+      <div class="display">
+        <app-numeric-gauge [current]="altitudeReceived" unit="feet"></app-numeric-gauge>
+      </div>
+
+      <div class="controller-container">
+
+        <div class="controller">
+          <div class="title">Gear Controller</div>
+          <div><app-gear-control [currentValue]="gearReceived" [uncheckedValue]="gear.MIN.value" [uncheckedPosition]="gear.MIN.position" [checkedValue]="gear.MAX.value" [checkedPosition]="gear.MAX.position" (update)="sendMessage('gear', $event)"></app-gear-control></div>
+        </div>
+
+        <div class="controller">
+          <div class="title">Flaps Controller</div>
+          <div><app-flaps-control [currentValue]="flapsReceived" [min]="flaps.MIN" [max]="flaps.MAX" [step]="flaps.STEP" (update)="sendMessage('flaps', $event)"></app-flaps-control></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

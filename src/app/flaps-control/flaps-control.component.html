@@ -1,0 +1,17 @@
+<div class="flaps-control">
+  <div class="control">
+    <md-slider
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumb-label]="true"
+        [tick-interval]="true"
+        [value]="currentValue"
+        (change)="controlFlap($event)">
+    </md-slider>
+  </div>
+  <div class="state">
+    <div>Last position received: {{currentValue}}</div>
+    <div>Last position sent: {{updatedValue}}</div>
+  </div>
+</div>
