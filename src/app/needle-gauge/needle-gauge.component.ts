@@ -29,10 +29,16 @@ export class NeedleGaugeComponent implements AfterViewInit {
   ngOnChanges(changes: SimpleChanges) {
 
     // update gauge
-    if(changes.value && typeof this.gauge == 'function') {
-      this.gauge(changes.value.currentValue);
-    } else {
-      this.gauge = this.d3gauge.drawGauge(this.options);
+    if(changes.value && changes.value.currentValue != undefined) {
+
+      if(this.gauge) {
+        this.gauge(changes.value.currentValue);
+      } /*
+else {
+        this.gauge = this.d3gauge.drawGauge(this.options);
+      }
+*/
+
     }
 
   }

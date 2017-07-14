@@ -10,9 +10,9 @@ export class NumericGaugeComponent implements OnInit {
   @Input() current: number = 0;
   @Input() unit: string = '';
 
-  min: number;
-  max: number;
-  avg: number;
+  min: number = 0;
+  max: number = 0;
+  avg: number = 0;
   numberOfMeasures: number = 0;
 
   view: string = 'current';
@@ -30,15 +30,13 @@ export class NumericGaugeComponent implements OnInit {
 
     if(changes.current) {
 
-      if(!changes.current.firstChange) {
+      if(changes.current.currentValue != undefined && typeof changes.current.currentValue == 'number' && changes.current.currentValue >= 0) {
 
         // init
-        if(this.min == undefined) {
-
+        if(this.numberOfMeasures == 0) {
           this.min = changes.current.currentValue;
           this.max = changes.current.currentValue;
           this.avg = changes.current.currentValue;
-
         } else {
 
           // Min and Max
@@ -49,8 +47,6 @@ export class NumericGaugeComponent implements OnInit {
           this.avg = (this.avg * this.numberOfMeasures + +changes.current.currentValue) / (this.numberOfMeasures + 1);
 
         }
-
-
 
         this.numberOfMeasures++;
 
