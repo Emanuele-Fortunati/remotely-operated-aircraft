@@ -16,11 +16,11 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## What I would have done with more time
--Queue for messages sent when connection isn't online. At moment those messages aren't sent.
--More / Better unit and Angular testing
--Cleaner D3GaugeService (at moment is just a porting of a js file found online) - also some work on performances (a debouncer at least!)
--Line Chart
--Using Interfaces for the websocket messages and for most of the properties with type 'any'
--Responsive Design, probably using the flex model
--Perhaps creating submodules, instead of nesting all in the AppModule
--Technically, the altitude gauge should just reach 9 (I think), however I changed it to show the needle moving
+- Queue for messages sent when connection isn't online. At moment those messages aren't sent.
+- More / Better unit and Angular testing
+- Cleaner D3GaugeService (at moment is just a porting of a js file found online) - also some work on performances (a debouncer at least!)
+- Line Chart
+- Using Interfaces for the websocket messages and for most of the properties with type 'any'
+- Responsive Design, probably using the flex model
+- Perhaps creating submodules, instead of nesting all in the AppModule
+- Technically, the altitude gauge should just reach 9 (I think), however I changed it to show the needle moving
