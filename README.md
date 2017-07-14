@@ -17,7 +17,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## What I would have done with more time
 - Queue for messages sent when connection isn't online. At moment those messages aren't sent.
-- More / Better unit and Angular testing
+- Unit and Angular testing
 - Cleaner D3GaugeService (at moment is just a porting of a js file found online) - also some work on performances (a debouncer at least!)
 - Line Chart
 - Using Interfaces for the websocket messages and for most of the properties with type 'any'
