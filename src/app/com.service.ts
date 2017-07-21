@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
+import { TimerObservable } from "rxjs/observable/TimerObservable";
 import { Observer } from "rxjs/Observer";
 import { ISubscription } from "rxjs/Subscription";
 import 'rxjs/add/operator/share';
@@ -19,6 +20,7 @@ export class ComService {
 
   // constants
   public static WS_ENDPOINT = 'ws://interview.dev.ctx.ef.com/telemetry';
+  public static TEST_MODE = true;
 
   public static FLAPS_CTRL = {
     MIN: 0,
@@ -39,6 +41,129 @@ export class ComService {
     DEFAULT_VALUE: 0
   };
 
+  public static MESSAGES = [
+    {
+      data: `{
+        "control": {
+          "landing_gear": 0,
+          "flaps": 3
+        },
+        "telemetry": {
+          "airspeed": 280,
+          "altitude": 1250
+        }
+      }`
+    },
+    {
+      data: `{
+        "control": {
+          "landing_gear": 1,
+          "flaps": 1
+        },
+        "telemetry": {
+          "airspeed": 80,
+          "altitude": 880
+        }
+      }`
+    },
+    {
+      data: `{
+        "control": {
+          "landing_gear": 0,
+          "flaps": 3
+        },
+        "telemetry": {
+          "airspeed": 245,
+          "altitude": 1078
+        }
+      }`
+    },
+    {
+      data: `{
+        "control": {
+          "landing_gear": 0,
+          "flaps": 3
+        },
+        "telemetry": {
+          "airspeed": 365,
+          "altitude": 981
+        }
+      }`
+    },
+    {
+      data: `{
+        "control": {
+          "landing_gear": 1,
+          "flaps": 5
+        },
+        "telemetry": {
+          "airspeed": 380,
+          "altitude": 1050
+        }
+      }`
+    },
+    {
+      data: `{
+        "control": {
+          "landing_gear": 1,
+          "flaps": 2
+        },
+        "telemetry": {
+          "airspeed": 405,
+          "altitude": 1550
+        }
+      }`
+    },
+    {
+      data: `{
+        "control": {
+          "landing_gear": 0,
+          "flaps": 3
+        },
+        "telemetry": {
+          "airspeed": 280,
+          "altitude": 1250
+        }
+      }`
+    },
+    {
+      data: `{
+        "control": {
+          "landing_gear": 0,
+          "flaps": 3
+        },
+        "telemetry": {
+          "airspeed": 325,
+          "altitude": 975
+        }
+      }`
+    },
+    {
+      data: `{
+        "control": {
+          "landing_gear": 1,
+          "flaps": 2
+        },
+        "telemetry": {
+          "airspeed": 240,
+          "altitude": 1100
+        }
+      }`
+    },
+    {
+      data: `{
+        "control": {
+          "landing_gear": 1,
+          "flaps": 4
+        },
+        "telemetry": {
+          "airspeed": 324,
+          "altitude": 1260
+        }
+      }`
+    }
+  ];
+
   ws: any = null;
 
 
@@ -56,7 +181,35 @@ export class ComService {
 
     if(this.ws === null) {
 
-  		this.ws = new WebSocket(ComService.WS_ENDPOINT);
+      if(ComService.TEST_MODE) {
+          this.ws = {
+            onmessage: (data) => {
+              return data;
+            },
+            onerror: (error) => {
+              return error;
+            },
+            onclose: () => {
+              return true;
+            },
+            close: () => {
+              this.ws = null;
+            }
+          };
+
+          // Activate the fake websocket after a delay
+          let timer = TimerObservable.create(2000);
+          timer.subscribe(t=> {
+              let interval = TimerObservable.create(1000, 1000);
+              interval.subscribe(t=> {
+                  this.ws.onmessage(ComService.MESSAGES[[0,1,2,3,4,5,6,7,8,9][Math.floor(Math.random()*9)]]);
+              });
+          });
+
+      } else {
+        this.ws = new WebSocket(ComService.WS_ENDPOINT);
+      }
+
 
       if(this.subscription) {
     		//this.subscription.unsubscribe();
